@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salas de Terapia</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Salas de Terapia</h1>
+      <p id="welcome">Carregando...</p>
+      <div id="room-list" class="room-grid"></div>
+
+      <section id="availability" hidden>
+        <h2>Horários disponíveis para <span id="selected-room-name"></span></h2>
+        <form id="availability-form">
+          <label>
+            Data
+            <input type="date" id="date" />
+          </label>
+          <label>
+            Duração
+            <select id="duration"></select>
+          </label>
+        </form>
+        <div id="slots"></div>
+      </section>
+
+      <section id="my-reservations">
+        <h2>Minhas Reservas</h2>
+        <div id="reservations-list"></div>
+        <p class="whatsapp-info">Para dúvidas, alterações ou cancelamentos fora do prazo, entre em contato via WhatsApp.</p>
+      </section>
+
+      <p class="message" id="message"></p>
+      <button id="logout" class="button secondary">Sair</button>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

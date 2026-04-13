@@ -1,0 +1,186 @@
+{
+  "patients": [
+    {
+      "id": "f7a5e360-18ea-41da-87fe-ac40b0493e12",
+      "name": "Teste",
+      "phone": "11999999999",
+      "address": "Rua X, 123",
+      "referredBy": "Google",
+      "username": "teste1",
+      "passwordHash": "3e98b07712734608a7bd8b8aa8e621ae:b353f679f0860000e6c2d8e37ad4dadf60b954540f21edb04b8e543787af04ec0cd9ec9789ab2d47b409513e9c07ca5c8f0f989bc19f72e432ba2dc3c1a519e0",
+      "createdAt": "2026-04-13T18:18:01.595Z"
+    },
+    {
+      "id": "a16078b2-9bc5-40d6-8ed6-a63294d3c5be",
+      "name": "dasdadas",
+      "phone": "asdasdasd",
+      "address": "asdasdasdas",
+      "referredBy": "asdasdasdas",
+      "username": "asdasdas",
+      "passwordHash": "23b57211bff6e07b221df74be43045c5:b042be3f6ee9d66037f58437dd7c3aabd5a94517bcfbf4b995821af128af2000f3731077f4f4612e8abad0dbb21ec25c929f82fb889f94ee9e0fbd98f167afcc",
+      "createdAt": "2026-04-13T18:25:16.179Z"
+    },
+    {
+      "id": "07642c7b-946f-41f5-b079-82837b252b57",
+      "name": "Angelo Gaioto",
+      "phone": "asdasdas",
+      "address": "asdas",
+      "referredBy": "asdas",
+      "username": "agaioto",
+      "passwordHash": "8d6838f33ff2b2c1a626a9ae722b824a:4e35717d46a18b754dc8861bded47f25a976b21cc3e7333e2084d437e1046711effc3e45ffeb4bf9a690eb4841dd6fff43ad68e54d8136277ed26fff7bb8c5da",
+      "createdAt": "2026-04-13T18:28:37.330Z"
+    },
+    {
+      "id": "20b84766-8664-4c54-b60f-c7fea12176e3",
+      "name": "Ana Lima",
+      "phone": "11999",
+      "address": "Rua A",
+      "username": "analima",
+      "passwordHash": "84eb3fa9f3070418ad89921cffd025f1:283ec60a2d2fa07ee10be8472a668aa4f1c5e35276773613eedd88c4f69a609c1d18b70b841f4a4a9e786907d2836ef400321dc0be6246ecce48c025330c5cdb",
+      "createdAt": "2026-04-13T18:59:41.044Z"
+    },
+    {
+      "id": "47aab618-cfea-4568-95aa-a70f80c851cd",
+      "name": "maria",
+      "phone": "josefa",
+      "address": "asdadsa",
+      "referredBy": "asdads",
+      "username": "maria",
+      "passwordHash": "e7744e163fae189084cc4feffc331698:c6a5a51a246edb92feddeb111a44b244c21e28f648d6efd5ffb2a98decefa7601dcca83d9383510798bd5e5ad65df69dca7f56c5074c20775cacf4d13f63bf58",
+      "createdAt": "2026-04-13T19:02:26.992Z"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "room-1",
+      "name": "Sala 1",
+      "therapy": "Terapia A",
+      "createdAt": "2026-04-13T17:20:37.322Z"
+    },
+    {
+      "id": "room-2",
+      "name": "Sala 2",
+      "therapy": "Terapia B",
+      "createdAt": "2026-04-13T17:20:37.322Z"
+    },
+    {
+      "id": "room-3",
+      "name": "Sala 3",
+      "therapy": "Terapia C",
+      "createdAt": "2026-04-13T17:20:37.322Z"
+    },
+    {
+      "id": "room-4",
+      "name": "Sala 4",
+      "therapy": "Terapia D",
+      "createdAt": "2026-04-13T17:20:37.322Z"
+    },
+    {
+      "id": "room-5",
+      "name": "Sala 5",
+      "therapy": "Terapia E",
+      "createdAt": "2026-04-13T17:20:37.322Z"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "d5ce145e-9a43-4bc1-866c-42c88c42deb3",
+      "patientId": "f7a5e360-18ea-41da-87fe-ac40b0493e12",
+      "roomId": "room-1",
+      "startAt": "2026-04-14T13:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T18:32:30.200Z"
+    },
+    {
+      "id": "b14ed927-56c6-48e3-a1b8-306c3c11ede9",
+      "patientId": "f7a5e360-18ea-41da-87fe-ac40b0493e12",
+      "roomId": "room-1",
+      "startAt": "2026-04-14T14:15:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T18:32:49.135Z"
+    },
+    {
+      "id": "feb43d05-7973-4d88-aaf8-7db44a92d2c8",
+      "patientId": "f7a5e360-18ea-41da-87fe-ac40b0493e12",
+      "roomId": "room-2",
+      "startAt": "2026-04-16T13:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "cancelled",
+      "createdAt": "2026-04-13T18:41:21.824Z"
+    },
+    {
+      "id": "f7b06ef7-2e99-4644-9c97-2d4fc5f6ab10",
+      "patientId": "07642c7b-946f-41f5-b079-82837b252b57",
+      "roomId": "room-1",
+      "startAt": "2026-04-14T20:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T18:43:28.642Z"
+    },
+    {
+      "id": "55de127c-bdfb-4d5c-b6ae-75029b811b76",
+      "patientId": "07642c7b-946f-41f5-b079-82837b252b57",
+      "roomId": "room-5",
+      "startAt": "2026-04-13T11:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T18:44:12.487Z"
+    },
+    {
+      "id": "59ed2998-d754-439f-93fa-089259b7f9e1",
+      "patientId": "07642c7b-946f-41f5-b079-82837b252b57",
+      "roomId": "room-5",
+      "startAt": "2026-04-13T20:15:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T18:44:14.404Z"
+    },
+    {
+      "id": "9e15be97-0844-4e3d-b89a-99d84ed54112",
+      "patientId": "07642c7b-946f-41f5-b079-82837b252b57",
+      "roomId": "room-5",
+      "startAt": "2026-04-13T15:15:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T18:44:16.205Z"
+    },
+    {
+      "id": "e17bc0de-c19a-414e-9514-9c42db5fe291",
+      "patientId": "20b84766-8664-4c54-b60f-c7fea12176e3",
+      "roomId": "room-2",
+      "startAt": "2026-04-15T13:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "cancelled",
+      "createdAt": "2026-04-13T19:00:11.421Z"
+    },
+    {
+      "id": "1ad5cbdc-5a5c-4492-929c-8a917d0d5aeb",
+      "patientId": "07642c7b-946f-41f5-b079-82837b252b57",
+      "roomId": "room-2",
+      "startAt": "2026-04-13T21:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T19:01:41.403Z"
+    },
+    {
+      "id": "408efa61-3f19-4176-8618-f61d428e5c6e",
+      "patientId": "47aab618-cfea-4568-95aa-a70f80c851cd",
+      "roomId": "room-3",
+      "startAt": "2026-04-13T20:00:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T19:02:51.659Z"
+    },
+    {
+      "id": "14393b0d-4d35-4d4b-8700-49fdbdb12dce",
+      "patientId": "47aab618-cfea-4568-95aa-a70f80c851cd",
+      "roomId": "room-3",
+      "startAt": "2026-04-13T16:45:00.000Z",
+      "durationMinutes": 60,
+      "status": "confirmed",
+      "createdAt": "2026-04-13T19:02:54.269Z"
+    }
+  ]
+}

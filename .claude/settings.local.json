@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lsof -ti:4000)",
+      "Bash(xargs kill:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(curl -s -X POST 'http://localhost:4000/register' -H 'Content-Type: application/json' -d '{}')",
+      "Bash(curl -s -X POST 'http://localhost:4000/register' -H 'Content-Type: application/json' -d '{\"name\":\"Ana\",\"phone\":\"11999\",\"address\":\"Rua A\",\"username\":\"ana\",\"password\":\"abc\"}')",
+      "Bash(curl -s -X POST 'http://localhost:4000/register' -H 'Content-Type: application/json' -d '{\"name\":\"Ana Lima\",\"phone\":\"11999\",\"address\":\"Rua A\",\"username\":\"analima\",\"password\":\"senha123\"}')",
+      "Bash(curl -s -X POST 'http://localhost:4000/register' -H 'Content-Type: application/json' -d '{\"name\":\"Ana Dup\",\"phone\":\"11999\",\"address\":\"Rua A\",\"username\":\"analima\",\"password\":\"senha123\"}')"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Paciente</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Cadastro de Paciente</h1>
+      <form id="register-form">
+        <label>Nome<input type="text" name="name" required /></label>
+        <label>Telefone<input type="text" name="phone" required /></label>
+        <label>Endereço<input type="text" name="address" required /></label>
+        <label>Como conheceu a clínica?<input type="text" name="referredBy" /></label>
+        <label>Usuário<input type="text" name="username" required /></label>
+        <label>Senha<input type="password" name="password" required minlength="6" /></label>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <p class="message" id="message"></p>
+      <p class="auth-link">Já tem conta? <a href="/login">Entrar</a></p>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

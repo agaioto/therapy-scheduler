@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>Login</h1>
+      <form id="login-form">
+        <label>Usuário<input type="text" name="username" required /></label>
+        <label>Senha<input type="password" name="password" required /></label>
+        <button type="submit">Entrar</button>
+      </form>
+      <p class="message" id="message"></p>
+      <p class="auth-link">Sem conta? <a href="/register">Cadastre-se</a></p>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

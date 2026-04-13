@@ -1,0 +1,297 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+}
+
+.card {
+  width: min(100%, 520px);
+  padding: 32px;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.9rem;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #4338ca;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #3730a3;
+}
+
+.message {
+  min-height: 1.5em;
+  margin: 0;
+  color: #334155;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  background: #4338ca;
+}
+
+.button.secondary {
+  background: #64748b;
+}
+
+.slots-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slot-button {
+  width: auto;
+  padding: 10px 16px;
+  background: #e0e7ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.slot-button:hover {
+  background: #4338ca;
+  color: white;
+}
+
+.reservation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+  margin-bottom: 8px;
+}
+
+#my-reservations h2 {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.cancel-button {
+  width: auto;
+  align-self: flex-start;
+  padding: 8px 14px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.cancel-button:hover {
+  background: #b91c1c;
+}
+
+.no-cancel {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.whatsapp-info {
+  font-size: 0.85rem;
+  color: #16a34a;
+  margin-top: 16px;
+}
+
+.card-wide {
+  width: min(100%, 900px);
+}
+
+.reception-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.room-section {
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.room-section h3 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+}
+
+.room-therapy {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.room-empty {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.reception-reservation {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 6px;
+}
+
+.reception-time {
+  font-weight: 600;
+  min-width: 48px;
+}
+
+.reception-duration {
+  font-size: 0.85rem;
+  color: #64748b;
+  min-width: 52px;
+}
+
+.reception-patient {
+  flex: 1;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.room-card {
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+}
+
+input, select, button {
+  min-height: 44px;
+}
+
+.auth-link {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.auth-link a {
+  color: #4338ca;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .room-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reception-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reception-reservation {
+    flex-wrap: wrap;
+  }
+
+  .card-wide {
+    width: 100%;
+  }
+}
