@@ -204,6 +204,12 @@ async function handleAvailability(req: http.IncomingMessage, res: http.ServerRes
     return sendJson(res, 400, { error: 'Data deve estar no formato AAAA-MM-DD.' });
   }
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  if (date < today) {
+    return sendJson(res, 200, { roomId, date: dateValue, durationMinutes, slots: [] });
+  }
+
   const state = await loadDatabase();
   const room = state.rooms.find((entry) => entry.id === roomId);
   if (!room) {
@@ -244,6 +250,11 @@ async function handleCreateReservation(req: http.IncomingMessage, res: http.Serv
   if (!patient) return sendJson(res, 404, { error: 'Paciente não encontrado.' });
 
   const startAt = new Date(body.startAt);
+
+  if (startAt < new Date()) {
+    return sendJson(res, 400, { error: 'Não é possível reservar em datas passadas.' });
+  }
+
   const day = startAt.getDay();
   if (day === 0 || day === 6) {
     return sendJson(res, 400, { error: 'Reservas são permitidas apenas de segunda a sexta.' });

@@ -105,7 +105,9 @@ async function loadRoomsPage() {
   }
 
   if (dateInput) {
-    dateInput.value = new Date().toISOString().slice(0, 10);
+    const today = new Date().toISOString().slice(0, 10);
+    dateInput.value = today;
+    dateInput.min = today;
   }
 
   if (durationSelect) {
@@ -131,6 +133,15 @@ async function loadRoomsPage() {
     const duration = durationSelect.value;
 
     if (!date || !duration) {
+      return;
+    }
+
+    const today = new Date().toISOString().slice(0, 10);
+    if (date < today) {
+      slotsContainer.innerHTML = '';
+      availability.hidden = false;
+      if (selectedRoomName) selectedRoomName.textContent = selectedRoomTitle;
+      slotsContainer.innerHTML = '<p>Selecione uma data a partir de hoje.</p>';
       return;
     }
 
