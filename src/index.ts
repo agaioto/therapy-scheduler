@@ -1,0 +1,11 @@
+import { initDatabase } from './db.ts';
+
+async function main() {
+  await initDatabase();
+  console.log('Database initialized successfully.');
+}
+
+main().catch((error) => {
+  console.error('Initialization failed:', error);
+  process.exit(1);
+});
