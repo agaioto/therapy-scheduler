@@ -1,4 +1,4 @@
-import { initDatabase } from './db.ts';
+import { initDatabase } from './db.js';
 
 async function main() {
   await initDatabase();

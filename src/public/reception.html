@@ -16,6 +16,26 @@
         </label>
       </form>
       <div id="reception-grid" class="reception-grid"></div>
+
+      <hr class="section-divider" />
+
+      <section id="range-section">
+        <h2>Agendamentos por período</h2>
+        <form id="range-form">
+          <label>
+            De
+            <input type="date" id="range-from" />
+          </label>
+          <label>
+            Até
+            <input type="date" id="range-to" />
+          </label>
+          <button type="submit" class="button">Buscar período</button>
+        </form>
+        <p class="message" id="range-message"></p>
+        <div id="range-result"></div>
+      </section>
+
       <p class="message" id="message"></p>
       <a href="/" class="button secondary">Voltar</a>
     </main>

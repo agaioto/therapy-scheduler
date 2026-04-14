@@ -2,17 +2,17 @@ import http from 'http';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { initDatabase, loadDatabase, saveDatabase } from './db.ts';
+import { initDatabase, loadDatabase, saveDatabase } from './db.js';
 import {
   hashPassword,
   verifyPassword,
   validateRegistration,
   isUsernameTaken,
   registerPatient,
-} from './auth.ts';
-import type { RegistrationPayload, LoginPayload } from './auth.ts';
-import type { Reservation, Room } from './models.ts';
-import { reservationOverlaps, validateReservationPayload, VALID_DURATIONS } from './models.ts';
+} from './auth.js';
+import type { RegistrationPayload, LoginPayload } from './auth.js';
+import type { Reservation, Room } from './models.js';
+import { reservationOverlaps, validateReservationPayload, VALID_DURATIONS } from './models.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, 'public');
@@ -116,7 +116,7 @@ function getAvailableSlots(
     const nextReservation = {
       roomId,
       startAt: candidateISO,
-      durationMinutes,
+      durationMinutes: durationMinutes as 60 | 120,
     };
 
     const isBlocked = roomReservations.some((reservation) => reservationOverlaps(reservation, nextReservation));
@@ -260,13 +260,25 @@ async function handleCreateReservation(req: http.IncomingMessage, res: http.Serv
     return sendJson(res, 400, { error: 'Reservas são permitidas apenas de segunda a sexta.' });
   }
 
+  const activeReservations = state.reservations.filter((r) => r.status === 'confirmed');
+
+  // Task 9: Limitar reservas diárias por paciente
+  const sameDayReservations = activeReservations.filter((r) =>
+    r.patientId === body.patientId &&
+    new Date(r.startAt).getFullYear() === startAt.getFullYear() &&
+    new Date(r.startAt).getMonth() === startAt.getMonth() &&
+    new Date(r.startAt).getDate() === startAt.getDate()
+  );
+  if (sameDayReservations.length >= 2) {
+    return sendJson(res, 400, { error: 'Cada paciente pode realizar no máximo duas reservas por dia.' });
+  }
+
   const hour = startAt.getHours();
   const endHour = hour + body.durationMinutes / 60;
   if (hour < 8 || endHour > 19) {
     return sendJson(res, 400, { error: 'Reservas devem ser entre 08:00 e 19:00.' });
   }
 
-  const activeReservations = state.reservations.filter((r) => r.status === 'confirmed');
   const conflict = activeReservations.some((r) =>
     reservationOverlaps(r, { roomId: body.roomId, startAt: body.startAt, durationMinutes: body.durationMinutes })
   );
@@ -402,6 +414,53 @@ async function handleReceptionReservations(req: http.IncomingMessage, res: http.
   return sendJson(res, 200, { date: dateValue, rooms });
 }
 
+async function handleReceptionReservationsRange(req: http.IncomingMessage, res: http.ServerResponse) {
+  const requestUrl = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
+  const fromValue = requestUrl.searchParams.get('from') ?? '';
+  const toValue = requestUrl.searchParams.get('to') ?? '';
+
+  if (!fromValue) return sendJson(res, 400, { error: 'Data inicial (from) é obrigatória.' });
+  if (!toValue) return sendJson(res, 400, { error: 'Data final (to) é obrigatória.' });
+
+  const fromDate = parseDateFromYMD(fromValue);
+  const toDate = parseDateFromYMD(toValue);
+
+  if (!fromDate) return sendJson(res, 400, { error: 'Data inicial deve estar no formato AAAA-MM-DD.' });
+  if (!toDate) return sendJson(res, 400, { error: 'Data final deve estar no formato AAAA-MM-DD.' });
+
+  if (toDate < fromDate) {
+    return sendJson(res, 400, { error: 'A data final não pode ser anterior à data inicial.' });
+  }
+
+  const diffDays = Math.round((toDate.getTime() - fromDate.getTime()) / (1000 * 60 * 60 * 24));
+  if (diffDays > 31) {
+    return sendJson(res, 400, { error: 'O intervalo máximo permitido é de 31 dias.' });
+  }
+
+  const state = await loadDatabase();
+  const patientMap = new Map(state.patients.map((p) => [p.id, p]));
+  const roomMap = new Map(state.rooms.map((r) => [r.id, r]));
+
+  const reservations = state.reservations
+    .filter((r) => {
+      if (r.status !== 'confirmed') return false;
+      const d = new Date(r.startAt);
+      return d >= fromDate && d < new Date(toDate.getTime() + 24 * 60 * 60 * 1000);
+    })
+    .sort((a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime())
+    .map((r) => ({
+      id: r.id,
+      startAt: r.startAt,
+      durationMinutes: r.durationMinutes,
+      roomName: roomMap.get(r.roomId)?.name ?? 'Desconhecida',
+      therapy: roomMap.get(r.roomId)?.therapy ?? '',
+      patientName: patientMap.get(r.patientId)?.name ?? 'Desconhecido',
+      status: r.status,
+    }));
+
+  return sendJson(res, 200, { from: fromValue, to: toValue, reservations });
+}
+
 async function requestHandler(req: http.IncomingMessage, res: http.ServerResponse) {
   const requestUrl = new URL(req.url ?? '/', `http://${req.headers.host ?? 'localhost'}`);
   const pathname = requestUrl.pathname;
@@ -412,6 +471,10 @@ async function requestHandler(req: http.IncomingMessage, res: http.ServerRespons
 
   if (req.method === 'GET' && pathname.startsWith('/static/')) {
     return serveStaticFile(res, pathname);
+  }
+
+  if (req.method === 'GET' && pathname === '/api/reception/reservations/range') {
+    return handleReceptionReservationsRange(req, res);
   }
 
   if (req.method === 'GET' && pathname === '/api/reception/reservations') {
@@ -462,6 +525,7 @@ async function main() {
     console.log(`Server listening on http://localhost:${PORT}`);
   });
 }
+
 
 main().catch((error) => {
   console.error('Server failed to start:', error);

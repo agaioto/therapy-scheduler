@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import type { Patient, Room, Reservation } from './models.ts';
+import type { Patient, Room, Reservation } from './models.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.resolve(__dirname, '../therapy-scheduler-db.json');

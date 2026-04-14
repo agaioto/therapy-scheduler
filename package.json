@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/server.ts",
-    "validate": "ts-node src/index.ts"
+    "start": "node --loader ts-node/esm src/server.ts",
+    "validate": "node --loader ts-node/esm src/index.ts"
   },
   "dependencies": {},
   "devDependencies": {

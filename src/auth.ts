@@ -1,5 +1,6 @@
 import crypto from 'crypto';
-import type { DatabaseState, Patient } from './models.ts';
+import type { DatabaseState } from './db.js';
+import type { Patient } from './models.js';
 
 const HASH_ALGORITHM = 'sha256';
 const SALT_LENGTH = 16;

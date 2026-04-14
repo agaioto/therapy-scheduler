@@ -265,6 +265,57 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.section-divider {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 32px 0;
+}
+
+#range-section h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+#range-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+#range-form button {
+  width: auto;
+  white-space: nowrap;
+}
+
+.range-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+.range-table th,
+.range-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.range-table thead th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #475569;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.range-table tbody tr:hover {
+  background: #f8fafc;
+}
+
 @media (max-width: 480px) {
   body {
     padding: 12px;
@@ -293,5 +344,18 @@ button:disabled {
 
   .card-wide {
     width: 100%;
+  }
+
+  #range-form {
+    grid-template-columns: 1fr;
+  }
+
+  #range-form button {
+    width: 100%;
+  }
+
+  .range-table {
+    display: block;
+    overflow-x: auto;
   }
 }
